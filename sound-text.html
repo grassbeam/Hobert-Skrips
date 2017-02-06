@@ -48,9 +48,9 @@
                 <div class="container">
                     <ul id="page-nav" class="nav page-nav list-inline">
                         <li><a href="./">Home</a></li>
-                        <li class="active"><a  href="./sound.html">Suara</a></li>
+                        <li><a  href="./sound.html">Suara</a></li>
                         <li><a  href="./text.html">Text</a></li>
-                        <li><a  href="./sound-text.html">Sound and Text</a></li>
+                        <li class="active"><a  href="./sound-text.html">Sound and Text</a></li>
                     </ul><!--//page-nav-->
                 </div>
             </div><!--//page-nav-wrapper-->
@@ -65,10 +65,10 @@
 
         <section id="kampretan-section" class="kampretan-section section">
             <h2 class="section-title">Sound to Text</h2>
-            <div class="record sound text-center">
-                    <p>Record Sound here</p>
-                    <div class="player text-center" ng-app="soundApp" ng-controller="soundCtrl">
-                        
+            <div class="record sound"  ng-app="soundApp" ng-controller="soundCtrl">
+                    
+                    <div class="player text-center">
+                        <p>Record Sound here</p>
                         <button type="button" id="button_stop" class="btn {{greenRecord}}" ng-disabled="cantRecord" ng-click="recordFunction()" >
                           <i class="{{recorder}}"></i>
                         </button>
@@ -78,16 +78,46 @@
                         <!-- </button> -->
                         <!-- <p>State: {{state}}</p>    -->
                     </div>
-                    <h4 align="left">Text:</h4>
+                    <h4 align="left">Question Generated:</h4>
                     <div class="item active">
                         <blockquote class="quote">
                             <p>Lorem ipsum dolor sit amet, autem honestatis ad ius, mei omnis laboramus cu. Et solum perfecto vituperatoribus per. Vis iracundia elaboraret definitionem ut. Sea modo choro euismod et, purto errem saperet et usu. Mea iudico explicari te. At sea soluta albucius, usu ea gubergren persecuti, eu sonet graecis salutatus mel.</p>
                         </blockquote>
                     </div>
 
-            </div>
-            <div>
-                
+                    <div class="player text-center" >
+                        
+                        <button class="btn btn-primary">Get Answer</button>
+                        <h4 align="left">Output Text:</h4>
+                        <div class="item active" id="output-text">
+                            <blockquote class="quote">
+                                <p>Lorem ipsum dolor sit amet, autem honestatis ad ius, mei omnis laboramus cu. Et solum perfecto vituperatoribus per. Vis iracundia elaboraret definitionem ut. Sea modo choro euismod et, purto errem saperet et usu. Mea iudico explicari te. At sea soluta albucius, usu ea gubergren persecuti, eu sonet graecis salutatus mel.</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="col-md-6col-md-offset-3" id="grow-box" >
+                        <div class="relevant-list" ng-hide="showR">
+                            <h4>Relevant Document:</h4>
+                            <ul style="list-style-type:circle">
+                              <li><a href="#">Lorem ipsum dolor sit amet,</a></li>
+                              <li><a href="#">autem honestatis ad ius,</a></li>
+                              <li><a href="#">mei omnis laboramus cu.</a></li>
+                              <li><a href="#">Et solum perfecto vituperatoribus per.</a></li>
+                              <li><a href="#">Vis iracundia elaboraret definitionem ut.</a></li>
+                              <li><a href="#">Sea modo choro euismod et,</a></li>
+                              <li><a href="#">purto errem saperet et usu.</a></li>
+                              <li><a href="#">Mea iudico explicari te.</a></li>
+                              <li><a href="#">At sea soluta albucius,</a></li>
+                              <li><a href="#">usu ea gubergren persecuti,</a></li>
+                              <li><a href="#">eu sonet graecis salutatus mel.</a></li>
+                            </ul>    
+                        </div>
+                        <br>
+                        <div class="btnshow-frame text-center">
+                            <button type="button" class="btn btn-link" ng-click="showRelevantFunction()"> <i class="fa fa-chevron-up" ng-hide="showR"></i><br ng-hide="showR">{{resultBtnText}} <br ng-hide="!showR"> <i class="fa fa-chevron-down" ng-hide="!showR"></i> </button>
+                        </div>
+                    </div>
+
             </div>
         </section><!--//section-->
         
@@ -112,7 +142,6 @@
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script type="text/javascript">
         var state = 'stop';
-
         var app = angular.module('soundApp', []);
         app.controller('soundCtrl', function($scope) {
             $scope.player = 'fa fa-play';
@@ -122,6 +151,19 @@
             $scope.state = 'stopR';
             $scope.cantRecord = false;
             $scope.cantPlayed = true;
+
+            $scope.showR = true;
+                    $scope.resultBtnText = 'Show Relevant Document';
+                    $scope.showRelevantFunction = function(){
+                        $scope.showR = !$scope.showR;
+                        if(!$scope.showR) {
+                            $scope.resultBtnText = 'Hide Relevant Document';
+                        } else {
+                            $scope.resultBtnText = 'Show Relevant Document';
+                        }
+                    }
+
+
             $scope.recordFunction = function() {
                 if($scope.state == 'playR'){
                         $scope.state = 'stopR';

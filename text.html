@@ -74,7 +74,7 @@
 
         <section id="kampretan-section" class="kampretan-section section">
             <h2 class="section-title">Question Answering System</h2>
-            <div class="record sound text-center" ng-app="textApp" ng-controller="textCtrl">
+            <div class="record sound" ng-app="textApp" ng-controller="textCtrl">
                     <p>Input text here</p>
                     <div class="player text-center" >
                         
@@ -93,12 +93,28 @@
                             </blockquote>
                         </div>
                     </div>
-                    <div id="grow-box" >
+                    <div class="col-md-6col-md-offset-3" id="grow-box" >
                         <div class="relevant-list" ng-hide="showR">
-                            Lorem ipsum dolor sit amet, autem honestatis ad ius, mei omnis laboramus cu. Et solum perfecto vituperatoribus per. Vis iracundia elaboraret definitionem ut. Sea modo choro euismod et, purto errem saperet et usu. Mea iudico explicari te. At sea soluta albucius, usu ea gubergren persecuti, eu sonet graecis salutatus mel.
+                            <ul style="list-style-type:circle">
+                              <li><a href="#">Lorem ipsum dolor sit amet,</a></li>
+                              <li><a href="#">autem honestatis ad ius,</a></li>
+                              <li><a href="#">mei omnis laboramus cu.</a></li>
+                              <li><a href="#">Et solum perfecto vituperatoribus per.</a></li>
+                              <li><a href="#">Vis iracundia elaboraret definitionem ut.</a></li>
+                              <li><a href="#">Sea modo choro euismod et,</a></li>
+                              <li><a href="#">purto errem saperet et usu.</a></li>
+                              <li><a href="#">Mea iudico explicari te.</a></li>
+                              <li><a href="#">At sea soluta albucius,</a></li>
+                              <li><a href="#">usu ea gubergren persecuti,</a></li>
+                              <li><a href="#">eu sonet graecis salutatus mel.</a></li>
+                            </ul>    
+                        </div>
+                        <br>
+                        <div class="btnshow-frame text-center">
+                            <button type="button" class="btn btn-link" ng-click="showRelevantFunction()"> <i class="fa fa-chevron-up" ng-hide="showR"></i><br ng-hide="showR">{{resultBtnText}} <br ng-hide="!showR"> <i class="fa fa-chevron-down" ng-hide="!showR"></i> </button>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-link" ng-click="showRelevantFunction()"> <i class="fa fa-chevron-up" ng-hide="showR"></i><br ng-hide="showR">{{resultBtnText}} <br ng-hide="!showR"> <i class="fa fa-chevron-down" ng-hide="!showR"></i> </button>
+                    
             </div>
             <div>
                 
